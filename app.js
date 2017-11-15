@@ -5,13 +5,9 @@ function onReady(){
 const addToDoForm = document.getElementById('addToDoForm');
 const newToDoText = document.getElementById('newToDoText');
 const toDoList = document.getElementById('toDoList');
-}
-window.onload = function(){
 
-   const toDoList = document.getElementById('toDoList');
-
- addToDoForm.addEventListener('submit', event => {
-  event.preventDefault();
+addToDoForm.addEventListener('submit', event => {
+ event.preventDefault();
 
 // get the text
  let title = newToDoText.value;
@@ -23,10 +19,17 @@ window.onload = function(){
   let checkbox = document.createElement('input');
 
 // create delete button
-  let delElement = document.
+  let removeToDo = document.createElement('button');
+
+  removeToDo.addEventListener('click', function(e) {
+        toDoList.removeChild(newLi);
+    });
 
 // set the input's type to checkbox
  checkbox.type = "checkbox";
+
+removeToDo.innerHTML ="delete";
+
 
 // set the title
 newLi.textContent = title;
@@ -37,12 +40,14 @@ newLi.textContent = title;
 //attach the li to the ul
 toDoList.appendChild(newLi);
 
+newLi.appendChild(removeToDo);
+
 // empty the input
  newToDoText.value = '';
 
 });
 }
 
-
-
-};
+window.onload = function(){
+onReady();
+}
